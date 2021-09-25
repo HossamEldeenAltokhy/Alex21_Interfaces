@@ -10,6 +10,12 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+
+#define _PA   0
+#define _PB   1
+#define _PC   2
+#define _PD   3
+
 #define Relay  2 // PA2
 #define Buzzer 3 // PA2
 
@@ -32,19 +38,59 @@ void set_Buzzer(int state);
 void init_Leds();
 void set_Led(int LedNumber, int state);
 
+void init_Buttons();
+
+int isPress_B(int pinNum);
+int isPressed(int portNum, int pinNum);
+
 int main(void) {
     /* Replace with your application code */
     // Static
     init_Leds();
-        while (1) {
-            // Dynamic
+    init_Buttons();
+    while (1) {
+
+        if (isPressed(_PB, Btn0)) {
+            // Pressed
             set_Led(Led0, ON);
-            _delay_ms(500);
+            set_Led(Led1, ON);
+            set_Led(Led2, ON);
+        } else {
+            // Release
             set_Led(Led0, OFF);
-            _delay_ms(500);
+            set_Led(Led1, OFF);
+            set_Led(Led2, OFF);
+        }
+
+
 
     }
+    return 0;
+}
+
+int isPressed(int portNum, int pinNum) {
+    switch (portNum) {
+        case _PA:
+            return ((PINA & (1 << pinNum)) ? 1 : 0);
+            break;
+        case _PB:
+            return ((PINB & (1 << pinNum)) ? 1 : 0);
+            break;
+        case _PC:
+            return ((PINC & (1 << pinNum)) ? 1 : 0);
+            break;
+        case _PD:
+            return ((PIND & (1 << pinNum)) ? 1 : 0);
+            break;
+    }
+}
+
+int isPress_B(int pinNum) {
+    if (PINB & (1 << pinNum)) {
+        return 1;
+    } else {
         return 0;
+    }
 }
 
 void init_Buzzer() {
@@ -120,4 +166,13 @@ void set_Led(int LedNumber, int state) {
     }
 
 
+}
+
+void init_Buttons() {
+    //    #define Btn0   0 // PB0
+    DDRB &= ~(1 << Btn0);
+    //    #define Btn1   6 // PD6
+    DDRD &= ~(1 << Btn1);
+    //    #define Btn2   2 // PD2
+    DDRD &= ~(1 << Btn2);
 }
