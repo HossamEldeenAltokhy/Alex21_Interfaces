@@ -34,7 +34,7 @@ extern "C" {
 #define ON  1
 #define OFF 0
 #define OUT 1
-#define IN 0
+#define IN  0
 
     
     
