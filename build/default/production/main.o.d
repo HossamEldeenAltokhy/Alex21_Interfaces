@@ -13,7 +13,7 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
  config.h \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\util\delay.h \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\util\delay_basic.h \
- c:\program\ files\microchip\xc8\v2.32\avr\avr\include\math.h IO.h
+ c:\program\ files\microchip\xc8\v2.32\avr\avr\include\math.h IO.h mLCD.h
 
 c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\io.h:
 
@@ -46,3 +46,5 @@ c:\program\ files\microchip\xc8\v2.32\avr\avr\include\util\delay_basic.h:
 c:\program\ files\microchip\xc8\v2.32\avr\avr\include\math.h:
 
 IO.h:
+
+mLCD.h:

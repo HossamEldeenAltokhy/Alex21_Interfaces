@@ -11,29 +11,21 @@
 
 #include "config.h"
 
+int x =100;
+
+char str[]= "ALEX 21";
 int main(void) {
     /* Replace with your application code */
 
-    //unsigned char x = 0;
-    //setPortDir(_PA, OUT);
-
-    //    setPortDir(_PC, IN);
-
-    // setPortData(_PA, 0x0F);// 00001111
-
-
-    setPinDir(_PA, PA0, OUT);
-    setPinDir(_PC, PC0, IN);
-
-
-
-    setPinData(_PA, PA0, ON);
-    _delay_ms(200);
-    setPinData(_PA, PA0, OFF);
+    init_LCD();
+    
+//    _delay_ms(50);
+    
+    LCD_Write_Str(str);
     while (1) {
 
 
-        _delay_ms(500);
+        
 
 
     }

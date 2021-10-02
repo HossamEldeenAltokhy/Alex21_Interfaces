@@ -42,6 +42,7 @@ extern "C" {
     
 #include <util/delay.h>
 #include "IO.h"
+#include "mLCD.h"
 #ifdef	__cplusplus
 }
 #endif
