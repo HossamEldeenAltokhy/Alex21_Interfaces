@@ -1,12 +1,12 @@
 /* 
- * File:   mLCD.h
+ * File:   mLCD_4bit.h
  * Author: hossa
  *
- * Created on October 1, 2021, 1:49 PM
+ * Created on October 2, 2021, 12:22 PM
  */
 
-#ifndef MLCD_H
-#define	MLCD_H
+#ifndef MLCD_4BIT_H
+#define	MLCD_4BIT_H
 
 // HW --- Connections Configurations
 
@@ -30,19 +30,21 @@
 #define row0        0
 #define row1        1
 
-void init_LCD();
-void LCD_DATA(char data);
-void LCD_CMD(char cmd);
-void LCD_EN();
+void init_LCD_4bit();
+void LCD_DATA_4bit(char data);
+void LCD_CMD_4bit(char cmd);
+void LCD_EN_4bit();
 
-void LCD_CLEAR();
+void LCD_CLEAR_4bit();
 
-void LCD_Write_Str(char*);
+void LCD_Write_Str_4bit(char*);
 
-void LCD_Write_Num(int num);
+void LCD_Write_Num_4bit(int num);
 
-void goto_XY(int row, int column);
+void goto_XY_4bit(int row, int column);
 
 
-#endif	/* MLCD_H */
+
+
+#endif	/* MLCD_4BIT_H */
 

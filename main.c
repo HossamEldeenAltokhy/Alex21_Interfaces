@@ -11,23 +11,28 @@
 
 #include "config.h"
 
-int x =100;
+int x = 100;
 
-char str[]= "ALEX 21";
+char str[] = "ALEX 21";
+char str1[] = "Y = ";
 int main(void) {
     /* Replace with your application code */
 
     init_LCD();
-    
-//    _delay_ms(50);
-    
+
+    //    _delay_ms(50);
+
     LCD_Write_Str(str);
+    goto_XY(row1,  2);
+    LCD_Write_Str(str1);
     while (1) {
-
-
-        
-
-
+//        LCD_Write_Str(str);
+//        goto_XY(row1,  2);
+//        LCD_Write_Str(str1);
+//        LCD_Write_Num(x);
+//        _delay_ms(500);
+//        LCD_CLEAR();
+//        x++;
     }
     return 0;
 }

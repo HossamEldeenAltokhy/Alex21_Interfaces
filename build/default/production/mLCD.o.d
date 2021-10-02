@@ -13,7 +13,9 @@ build/default/production/mLCD.o.d build/default/production/mLCD.o: mLCD.c \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\version.h \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\fuse.h \
- c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\lock.h
+ c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\lock.h \
+ c:\program\ files\microchip\xc8\v2.32\avr\avr\include\stdlib.h \
+ c:\program\ files\microchip\xc8\v2.32\avr\lib\gcc\avr\5.4.0\include\stddef.h
 
 mLCD.h:
 
@@ -48,3 +50,7 @@ c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\version.h:
 c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\fuse.h:
 
 c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\lock.h:
+
+c:\program\ files\microchip\xc8\v2.32\avr\avr\include\stdlib.h:
+
+c:\program\ files\microchip\xc8\v2.32\avr\lib\gcc\avr\5.4.0\include\stddef.h:

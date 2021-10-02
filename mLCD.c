@@ -3,7 +3,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "IO.h"
-
+#include <stdlib.h>
 
 void init_LCD(){
     // Set AVR IO Directions
@@ -37,12 +37,13 @@ void LCD_DATA(char data){
 //    LCD_data = data;
     setPortData(LCD_data, data);
     LCD_EN();
-    
+    _delay_ms(10);
 }
 void LCD_CMD(char cmd){
     setPinData(LCD_control, RS, OFF);
     setPortData(LCD_data, cmd);
     LCD_EN();
+    _delay_ms(10);
 }
 //5/10000000
 void LCD_EN(){
@@ -68,4 +69,21 @@ void LCD_Write_Str(char* str){
 
 void LCD_Write_Num(int num){
    // Write Code Here 
+    char buffer[11];
+    itoa(num, buffer, 10);
+    LCD_Write_Str(buffer);
+    
+}
+
+void goto_XY(int row, int column){
+    
+    if(row){
+        // Second Line
+        LCD_CMD(0xC0|(column&0x0F));
+    }
+    else{
+        // First Line
+        LCD_CMD(0x80|(column&0x0F));
+    } 
+    
 }
