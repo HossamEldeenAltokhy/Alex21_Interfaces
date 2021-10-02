@@ -87,3 +87,7 @@ void goto_XY(int row, int column){
     } 
     
 }
+
+void LCD_shiftRight(){
+    LCD_CMD(ShiftRight);
+}

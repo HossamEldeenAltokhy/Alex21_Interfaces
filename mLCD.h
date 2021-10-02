@@ -27,6 +27,8 @@
 #define D_ON_C_OFF 0x0C
 #define Inc_Cur    0x06
 
+#define ShiftRight 0x1C
+
 #define row0        0
 #define row1        1
 
@@ -43,6 +45,7 @@ void LCD_Write_Num(int num);
 
 void goto_XY(int row, int column);
 
+void LCD_shiftRight();
 
 #endif	/* MLCD_H */
 
