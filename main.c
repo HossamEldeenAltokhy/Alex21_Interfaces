@@ -8,23 +8,34 @@
 
 
 #include <avr/io.h>
-
+#include <avr/interrupt.h>
 #include "config.h"
 #include "mLCD_4bit.h"
 
-int x = 100;
 
-char str[] = "ALEX1234567890*#";//        ALEX 21";
-char str1[] = "Y = ";
+ISR(INT0_vect){
+       
+    togglePinData(_PC, Led0);
+    
+}
+
+
 int main(void) {
     /* Replace with your application code */
 
-
-    init_LCD_4bit();
-    _delay_ms(50);
-    LCD_Write_Str_4bit(str);
+    // Select Interrupt Mode on Rising Edge.
+    MCUCR |= (1<<ISC01)|(1<<ISC00);
+    // Enable Interrupt 0
+    GICR |= (1<<INT0);
+    sei();
+    
+    setPinDir(_PC, Led0, OUT);
+    setPortDir(_PA, OUT);
     while (1) {
 
+        togglePortData(_PA);
+        _delay_ms(200);
+        
     }
     return 0;
 }
