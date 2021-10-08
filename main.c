@@ -10,6 +10,7 @@
 #include <avr/io.h>
 
 #include "config.h"
+#include "mLCD_4bit.h"
 
 int x = 100;
 
@@ -18,19 +19,12 @@ char str1[] = "Y = ";
 int main(void) {
     /* Replace with your application code */
 
-    
-    init_Motor();
-    
-  
 
+    init_LCD_4bit();
+    _delay_ms(50);
+    LCD_Write_Str_4bit(str);
     while (1) {
-        Motor_Forward();
-        
-        _delay_ms(5000);
-        
-        Motor_Reverse();
-        
-        _delay_ms(5000);
+
     }
     return 0;
 }

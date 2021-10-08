@@ -6,6 +6,7 @@
  */
 
 #ifndef MLCD_H
+#ifndef MLCD_4BIT_H
 #define	MLCD_H
 
 // HW --- Connections Configurations
@@ -46,6 +47,6 @@ void LCD_Write_Num(int num);
 void goto_XY(int row, int column);
 
 void LCD_shiftRight();
-
+#endif	/* MLCD_H */
 #endif	/* MLCD_H */
 
