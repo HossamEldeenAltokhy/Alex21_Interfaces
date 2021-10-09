@@ -12,23 +12,27 @@
 #include "config.h"
 #include "mLCD_4bit.h"
 #include "mKeypad.h"
+#include "mExternalInterrupt.h"
 
 
-
+ISR(INT0_vect){
+    // Interrupt service Routine
+    
+    
+    
+}
 
 int main(void) {
     /* Replace with your application code */
 
-    init_keypad();
-    init_LCD_4bit();
 
+   
+    init_INT(_INT0, _MODE_Rising);
+    sei();
     while (1) {
 
  
-        while (getKey()) {
-
-            LCD_DATA_4bit(getKey());
-        }
+       
 
     }
     return 0;
