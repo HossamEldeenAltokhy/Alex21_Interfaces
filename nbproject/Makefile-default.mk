@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c IO.c uart.c mLCD.c mLCD_4bit.c mMotor.c mKeypad.c mExternalInterrupt.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c IO.c uart.c mLCD.c mLCD_4bit.c mMotor.c mKeypad.c mExternalInterrupt.c mADC.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/IO.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/mLCD.o ${OBJECTDIR}/mLCD_4bit.o ${OBJECTDIR}/mMotor.o ${OBJECTDIR}/mKeypad.o ${OBJECTDIR}/mExternalInterrupt.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/IO.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/mLCD.o.d ${OBJECTDIR}/mLCD_4bit.o.d ${OBJECTDIR}/mMotor.o.d ${OBJECTDIR}/mKeypad.o.d ${OBJECTDIR}/mExternalInterrupt.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/IO.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/mLCD.o ${OBJECTDIR}/mLCD_4bit.o ${OBJECTDIR}/mMotor.o ${OBJECTDIR}/mKeypad.o ${OBJECTDIR}/mExternalInterrupt.o ${OBJECTDIR}/mADC.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/IO.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/mLCD.o.d ${OBJECTDIR}/mLCD_4bit.o.d ${OBJECTDIR}/mMotor.o.d ${OBJECTDIR}/mKeypad.o.d ${OBJECTDIR}/mExternalInterrupt.o.d ${OBJECTDIR}/mADC.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/IO.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/mLCD.o ${OBJECTDIR}/mLCD_4bit.o ${OBJECTDIR}/mMotor.o ${OBJECTDIR}/mKeypad.o ${OBJECTDIR}/mExternalInterrupt.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/IO.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/mLCD.o ${OBJECTDIR}/mLCD_4bit.o ${OBJECTDIR}/mMotor.o ${OBJECTDIR}/mKeypad.o ${OBJECTDIR}/mExternalInterrupt.o ${OBJECTDIR}/mADC.o
 
 # Source Files
-SOURCEFILES=main.c IO.c uart.c mLCD.c mLCD_4bit.c mMotor.c mKeypad.c mExternalInterrupt.c
+SOURCEFILES=main.c IO.c uart.c mLCD.c mLCD_4bit.c mMotor.c mKeypad.c mExternalInterrupt.c mADC.c
 
 
 
@@ -142,6 +142,12 @@ ${OBJECTDIR}/mExternalInterrupt.o: mExternalInterrupt.c  .generated_files/flags/
 	@${RM} ${OBJECTDIR}/mExternalInterrupt.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/mExternalInterrupt.o.d" -MT "${OBJECTDIR}/mExternalInterrupt.o.d" -MT ${OBJECTDIR}/mExternalInterrupt.o -o ${OBJECTDIR}/mExternalInterrupt.o mExternalInterrupt.c 
 	
+${OBJECTDIR}/mADC.o: mADC.c  .generated_files/flags/default/352b0de6958262f83b5e7c0e135f046f9276efbb .generated_files/flags/default/2f9e58fd8ce1a2611b0e0fd33168db129b9285f3
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mADC.o.d 
+	@${RM} ${OBJECTDIR}/mADC.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/mADC.o.d" -MT "${OBJECTDIR}/mADC.o.d" -MT ${OBJECTDIR}/mADC.o -o ${OBJECTDIR}/mADC.o mADC.c 
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/7b3a5bb213d609c3714a478d41ea4bf35f4b6bd0 .generated_files/flags/default/2f9e58fd8ce1a2611b0e0fd33168db129b9285f3
 	@${MKDIR} "${OBJECTDIR}" 
@@ -190,6 +196,12 @@ ${OBJECTDIR}/mExternalInterrupt.o: mExternalInterrupt.c  .generated_files/flags/
 	@${RM} ${OBJECTDIR}/mExternalInterrupt.o.d 
 	@${RM} ${OBJECTDIR}/mExternalInterrupt.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/mExternalInterrupt.o.d" -MT "${OBJECTDIR}/mExternalInterrupt.o.d" -MT ${OBJECTDIR}/mExternalInterrupt.o -o ${OBJECTDIR}/mExternalInterrupt.o mExternalInterrupt.c 
+	
+${OBJECTDIR}/mADC.o: mADC.c  .generated_files/flags/default/9a45a39777bf58edb0ad4b4108c78e54439d4d2c .generated_files/flags/default/2f9e58fd8ce1a2611b0e0fd33168db129b9285f3
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mADC.o.d 
+	@${RM} ${OBJECTDIR}/mADC.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/mADC.o.d" -MT "${OBJECTDIR}/mADC.o.d" -MT ${OBJECTDIR}/mADC.o -o ${OBJECTDIR}/mADC.o mADC.c 
 	
 endif
 

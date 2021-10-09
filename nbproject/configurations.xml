@@ -12,6 +12,7 @@
       <itemPath>mMotor.h</itemPath>
       <itemPath>mKeypad.h</itemPath>
       <itemPath>mExternalInterrupt.h</itemPath>
+      <itemPath>mADC.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -28,6 +29,7 @@
       <itemPath>mMotor.c</itemPath>
       <itemPath>mKeypad.c</itemPath>
       <itemPath>mExternalInterrupt.c</itemPath>
+      <itemPath>mADC.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

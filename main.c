@@ -13,25 +13,24 @@
 #include "mLCD_4bit.h"
 #include "mKeypad.h"
 #include "mExternalInterrupt.h"
+#include "mADC.h"
 
-
-ISR(INT0_vect){
-    // Interrupt service Routine
-    
-    
-    
-}
 
 int main(void) {
     /* Replace with your application code */
 
 
    
-    init_INT(_INT0, _MODE_Rising);
-    sei();
+   
+    init_ADC(_ch1, _AREF, _Pre128);
+    init_LCD_4bit();
     while (1) {
 
- 
+        ADC_StartConv();
+        int data = ADC_read();
+        LCD_CLEAR_4bit();
+        LCD_Write_Num_4bit(data);
+        _delay_ms(500);
        
 
     }
