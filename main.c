@@ -11,31 +11,25 @@
 #include <avr/interrupt.h>
 #include "config.h"
 #include "mLCD_4bit.h"
+#include "mKeypad.h"
 
 
-ISR(INT0_vect){
-       
-    togglePinData(_PC, Led0);
-    
-}
 
 
 int main(void) {
     /* Replace with your application code */
 
-    // Select Interrupt Mode on Rising Edge.
-    MCUCR |= (1<<ISC01)|(1<<ISC00);
-    // Enable Interrupt 0
-    GICR |= (1<<INT0);
-    sei();
-    
-    setPinDir(_PC, Led0, OUT);
-    setPortDir(_PA, OUT);
+    init_keypad();
+    init_LCD_4bit();
+
     while (1) {
 
-        togglePortData(_PA);
-        _delay_ms(200);
-        
+ 
+        while (getKey()) {
+
+            LCD_DATA_4bit(getKey());
+        }
+
     }
     return 0;
 }
