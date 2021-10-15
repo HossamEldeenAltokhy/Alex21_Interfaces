@@ -4,6 +4,13 @@
 
 void init_ADC(int ch, int ref, int prescaler) {
     // Write Code Here
+    
+    
+    ADMUX |= (ch << MUX0);
+    ADMUX |= (ref<<REFS0);
+    
+    ADCSRA |= (prescaler << ADPS0);
+    ADCSRA |= (1<<ADEN);
     /**
      * ADMUX :
 
