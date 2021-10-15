@@ -37,3 +37,8 @@ int ADC_read() {
     x |= (ADCH << 8);
     return x;
 }
+
+
+void ADC_init_INTERRUPT(){
+    // Write Code Here
+}
