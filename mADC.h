@@ -26,9 +26,11 @@
 
 #define _PS64   6
 #define _PS128  7
+
+
 void init_ADC(int ch, int ref, int prescaler);
-// ADMUX
-// ADCSRA
+
+void ADC_init_INTERRUPT();
 void ADC_StartConv();
 
 int ADC_read();
