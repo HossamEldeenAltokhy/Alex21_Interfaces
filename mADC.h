@@ -8,16 +8,18 @@
 #ifndef MADC_H
 #define	MADC_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
 
 
+void init_ADC(int ch, int ref, int prescaler);
+// ADMUX
+// ADCSRA
+void ADC_StartConv();
 
+int ADC_read();
 
-#ifdef	__cplusplus
-}
-#endif
+// ADCSRA   >> ADIF  -- Interrupt 
+
+//while(!(ADCSRA & (1<<ADIF)));
 
 #endif	/* MADC_H */
 
