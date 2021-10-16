@@ -32,7 +32,7 @@ void ADC_StartConv() {
 }
 
 int ADC_read() {
-//    while (!(ADCSRA & (1 << ADIF)));
+    while (!(ADCSRA & (1 << ADIF)));
     int x = ADCL;
     x |= (ADCH << 8);
     return x;

@@ -14,37 +14,42 @@
 #include "mKeypad.h"
 #include "mExternalInterrupt.h"
 #include "mADC.h"
+#include "mTimer.h"
 
-char unit[] = " mV";
 
-
-ISR(ADC_vect){
-    // When ADC finish Conversion
-    int data = ADC_read()* 4.887585532746823069403714565;
-    LCD_CLEAR_4bit();
-    LCD_Write_Num_4bit(data);
-    LCD_Write_Str_4bit(unit);
-    // READING.....
-    ADC_StartConv();
+ISR(TIMER0_OVF_vect){
+    static int x,y;
+    x++;
+    y++;
+    
+    if(y == 30){
+        togglePortData(_PD);
+        y = 0;
+    }
+    if(x == 60){
+        togglePortData(_PC);
+        x = 0;
+    }
+    
 }
+
+
 
 int main(void) {
     /* Replace with your application code */
 
-    init_ADC(0x10, _AVCC, _PS128);
-    ADC_init_INTERRUPT();
-    init_LCD_4bit();
-    _delay_ms(100);
+    setPortDir(_PC, OUT);
+    setPortDir(_PD, OUT);
+    init_Timer(NORMAL, _PRE1024);
+    Timer_interrupt_enable();
+    
+    
+
     sei();
-    ADC_StartConv();
+    
     while (1) {
 
-        
-//        int data = ADC_read()* 4.887585532746823069403714565;
-//        LCD_CLEAR_4bit();
-//        LCD_Write_Num_4bit(data);
-//        LCD_Write_Str_4bit(unit);
-        _delay_ms(500);
+
        
     }
     return 0;

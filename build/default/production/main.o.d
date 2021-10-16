@@ -15,7 +15,7 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\util\delay.h \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\util\delay_basic.h \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\math.h IO.h \
- mMotor.h mLCD_4bit.h mKeypad.h mExternalInterrupt.h mADC.h
+ mMotor.h mLCD_4bit.h mKeypad.h mExternalInterrupt.h mADC.h mTimer.h
 
 c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\io.h:
 
@@ -60,3 +60,5 @@ mKeypad.h:
 mExternalInterrupt.h:
 
 mADC.h:
+
+mTimer.h:
