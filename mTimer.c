@@ -59,6 +59,10 @@ void init_Timer(int mode, int ClockSelect){
 //    }
 }
 
-void Timer_interrupt_enable(){
-    TIMSK |= (1<<TOIE0);
+void Timer_interrupt_enable(int INT_selector){
+    TIMSK |= (1<<INT_selector);
+}
+
+void Timer_setCompValue(unsigned char compValue){
+    OCR0 =  compValue;
 }

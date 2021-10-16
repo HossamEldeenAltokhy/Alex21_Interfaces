@@ -26,9 +26,13 @@
 #define _EX_Falling  6
 #define _EX_Rising   7
 
-
+#define INT_TOV      TOIE0
+#define INT_TOC      OCIE0
 void init_Timer(int mode, int ClockSelect);
 
 void Timer_interrupt_enable();
+
+void Timer_setCompValue(unsigned char compValue);
+
 #endif	/* MTIMER_H */
 
