@@ -66,3 +66,17 @@ void Timer_interrupt_enable(int INT_selector){
 void Timer_setCompValue(unsigned char compValue){
     OCR0 =  compValue;
 }
+
+
+void setOC0(int OC0_mode ){
+    TCCR0 &= ~((1<<COM01)|(1<<COM00));
+    setPinDir(_PB, PIN3, OUT);
+    TCCR0 |= (OC0_mode<<COM00);
+//    if(OC0_mode){
+//        // SET on Compare Match
+//        TCCR0 |= (3<<COM00);
+//    }else{
+//        // Clear on Compare Match
+//        TCCR0 |= (2<<COM00);
+//    }
+}
