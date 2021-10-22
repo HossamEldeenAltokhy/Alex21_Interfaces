@@ -6,9 +6,11 @@
             <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/mADC.c</file>
             <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/mADC.h</file>
             <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/main.c</file>
-            <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/mTimer.c</file>
             <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/config.h</file>
             <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/mTimer.h</file>
+            <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/mTimer.c</file>
+            <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/mLCD_4bit.h</file>
+            <file>file:/C:/Users/hossa/MPLABXProjects/Alex_21_IO.X/mLCD_4bit.c</file>
         </group>
     </open-files>
 </project-private>

@@ -20,8 +20,8 @@
 
 
 
-unsigned char incrementer = 0;
-
+unsigned char incrementer = 100;
+unsigned char dutyCycle;
 
 
 
@@ -29,24 +29,34 @@ int main(void) {
     /* Replace with your application code */
     init_LCD_4bit();
     Timer_setCompValue(100);
-
+    dutyCycle = OCR0*100/255;
     setOC0(ClearOnComp);
-    init_Timer(FPWM,_PRE1024);
+    init_Timer(PWM,_PRE1024);
     
 
-    LCD_Write_Num_4bit(10);
+    LCD_Write_Num_4bit(dutyCycle);
+    LCD_DATA_4bit('%');
+    
 //    sei();
 //    Timer_interrupt_enable(INT_TOV);
     while (1) {
 
         if(isPressed(_PC, PC0)){
             incrementer +=10;
-            OCR0 = incrementer;
+            Timer_setCompValue(incrementer);
+            dutyCycle = incrementer *100/255;
+            LCD_CLEAR_4bit();
+            LCD_Write_Num_4bit(dutyCycle);
+            LCD_DATA_4bit('%');
             _delay_ms(500);
         }
         if(isPressed(_PC, PC1)){
             incrementer -=10;
-            OCR0 = incrementer;
+            Timer_setCompValue(incrementer);
+            dutyCycle = incrementer *100/255;
+            LCD_CLEAR_4bit();
+            LCD_Write_Num_4bit(dutyCycle);
+            LCD_DATA_4bit('%');
             _delay_ms(500);
         }
         
