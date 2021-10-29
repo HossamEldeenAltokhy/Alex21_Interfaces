@@ -15,6 +15,7 @@
 #include "mExternalInterrupt.h"
 #include "mADC.h"
 #include "mTimer.h"
+#include "uart.h"
 
 
 
@@ -23,44 +24,34 @@
 unsigned char incrementer = 100;
 unsigned char dutyCycle;
 
+ISR(USART_RXC_vect){
 
+    char data = UDR;
+    if(data == 'A'){
+        set_Led(Led1 , ON);
+        set_Buzzer(ON);
+    }
+    if(data == 'B'){
+        set_Led(Led1 , OFF);
+        set_Buzzer(OFF);
+    }
+    
+}
 
 int main(void) {
     /* Replace with your application code */
-    init_LCD_4bit();
-    Timer_setCompValue(100);
-    dutyCycle = OCR0*100/255;
-    setOC0(ClearOnComp);
-    init_Timer(PWM,_PRE1024);
-    
-
-    LCD_Write_Num_4bit(dutyCycle);
-    LCD_DATA_4bit('%');
-    
-//    sei();
-//    Timer_interrupt_enable(INT_TOV);
+    setPortDir(_PC, OUT);
+    _delay_ms(5);
+    init_uart(_BR9600, RX_ENABLE, TX_ENABLE );
+    uart_enable_INT(_RXCIE);
+    init_Leds();
+    init_Buzzer();
+    sei();
     while (1) {
 
-        if(isPressed(_PC, PC0)){
-            incrementer +=10;
-            Timer_setCompValue(incrementer);
-            dutyCycle = incrementer *100/255;
-            LCD_CLEAR_4bit();
-            LCD_Write_Num_4bit(dutyCycle);
-            LCD_DATA_4bit('%');
-            _delay_ms(500);
-        }
-        if(isPressed(_PC, PC1)){
-            incrementer -=10;
-            Timer_setCompValue(incrementer);
-            dutyCycle = incrementer *100/255;
-            LCD_CLEAR_4bit();
-            LCD_Write_Num_4bit(dutyCycle);
-            LCD_DATA_4bit('%');
-            _delay_ms(500);
-        }
+ 
         
-       
+        
     }
     return 0;
 }
