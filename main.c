@@ -17,6 +17,8 @@
 #include "mTimer.h"
 #include "uart.h"
 #include "mSPI.h"
+#include "mLCD.h"
+#include <avr/eeprom.h>
 
 
 
@@ -25,14 +27,18 @@
 int main(void) {
     /* Replace with your application code */
    
-    init_spi( master , spi_clk_128);
+ 
+//    eeprom_write_byte(( uint8_t *) 10, 55);
+//    _delay_ms(50);
+    init_LCD_4bit();
     
-    char counter = 0; 
+    _delay_ms(50);
+    int data =  eeprom_read_byte((const uint8_t *) 10);
+    _delay_ms(50);
+    LCD_Write_Num_4bit(data);
     while (1) {
 
-        spi_send(counter++);
-        _delay_ms(500);
-        
+      
         
         
     }

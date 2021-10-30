@@ -16,7 +16,9 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\util\delay_basic.h \
  c:\program\ files\microchip\xc8\v2.32\avr\avr\include\math.h IO.h \
  mMotor.h mLCD_4bit.h mKeypad.h mExternalInterrupt.h mADC.h mTimer.h \
- uart.h mSPI.h
+ uart.h mSPI.h mLCD.h \
+ c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\eeprom.h \
+ c:\program\ files\microchip\xc8\v2.32\avr\lib\gcc\avr\5.4.0\include\stddef.h
 
 c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\io.h:
 
@@ -67,3 +69,9 @@ mTimer.h:
 uart.h:
 
 mSPI.h:
+
+mLCD.h:
+
+c:\program\ files\microchip\xc8\v2.32\avr\avr\include\avr\eeprom.h:
+
+c:\program\ files\microchip\xc8\v2.32\avr\lib\gcc\avr\5.4.0\include\stddef.h:

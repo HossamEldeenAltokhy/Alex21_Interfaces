@@ -12,7 +12,7 @@
 
 #define RS      PB1
 #define RW      PB2
-#define EN      PB0
+#define EN      PB3
 
 #define LCD_Half_Data       PORTA
 #define LCD_Half_Dir        DDRA

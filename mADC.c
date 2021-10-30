@@ -35,6 +35,8 @@ int ADC_read() {
     while (!(ADCSRA & (1 << ADIF)));
     int x = ADCL;
     x |= (ADCH << 8);
+    
+//    int x = ADCW;
     return x;
 }
 

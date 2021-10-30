@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include "config.h"
 #include "mSPI.h"
+#include <avr/eeprom.h>
 
 void init_spi(int mode, int clk){
     
