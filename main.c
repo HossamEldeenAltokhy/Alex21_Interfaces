@@ -16,40 +16,23 @@
 #include "mADC.h"
 #include "mTimer.h"
 #include "uart.h"
+#include "mSPI.h"
 
 
 
 
-
-unsigned char incrementer = 100;
-unsigned char dutyCycle;
-
-ISR(USART_RXC_vect){
-
-    char data = UDR;
-    if(data == 'A'){
-        set_Led(Led1 , ON);
-        set_Buzzer(ON);
-    }
-    if(data == 'B'){
-        set_Led(Led1 , OFF);
-        set_Buzzer(OFF);
-    }
-    
-}
 
 int main(void) {
     /* Replace with your application code */
-    setPortDir(_PC, OUT);
-    _delay_ms(5);
-    init_uart(_BR9600, RX_ENABLE, TX_ENABLE );
-    uart_enable_INT(_RXCIE);
-    init_Leds();
-    init_Buzzer();
-    sei();
+   
+    init_spi( master , spi_clk_128);
+    
+    char counter = 0; 
     while (1) {
 
- 
+        spi_send(counter++);
+        _delay_ms(500);
+        
         
         
     }
