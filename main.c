@@ -18,6 +18,7 @@
 #include "uart.h"
 #include "mSPI.h"
 #include "mLCD.h"
+#include "mTWI.h"
 #include <avr/eeprom.h>
 
 
@@ -28,16 +29,20 @@ int main(void) {
     /* Replace with your application code */
    
  
-//    eeprom_write_byte(( uint8_t *) 10, 55);
-//    _delay_ms(50);
-    init_LCD_4bit();
-    
-    _delay_ms(50);
-    int data =  eeprom_read_byte((const uint8_t *) 10);
-    _delay_ms(50);
-    LCD_Write_Num_4bit(data);
+    init_TWI_BitRate();
+    _delay_ms(5000);
     while (1) {
 
+        if(TWI_start(SLA_W)){
+            // Start Condition Succesfully done.
+            int code = TWI_write(7);
+            if(code == 1){
+                TWI_stop();
+            }
+        }
+        
+        
+        _delay_ms(500);
       
         
         
