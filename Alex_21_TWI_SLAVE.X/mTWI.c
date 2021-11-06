@@ -3,14 +3,14 @@
 #include <avr/io.h>
 
 void init_TWI_BitRate(){
-    TWSR |= (1<<TWPS1)|(1<<TWPS0); // 4^ 64
+    TWSR = (1<<TWPS1)|(1<<TWPS0); // 4^ 64
     TWBR = 255;
 }
 int TWI_start(char address){
     char bus_status;
     
     // send START condition
-    TWCR |= (1<<TWSTA)|(1<<TWINT)|(1<<TWEN);  
+    TWCR = (1<<TWSTA)|(1<<TWINT)|(1<<TWEN);  
     // waiting TWINT flag to read status code.
     while (!(TWCR & (1<<TWINT)));
     bus_status  = TWSR & 0xF8; // xxxxx000
@@ -18,7 +18,7 @@ int TWI_start(char address){
         return 0;
     TWDR  = address;
     // send SLA+WorR
-    TWCR |= (1<<TWINT)|(1<<TWEN);  
+    TWCR = (1<<TWINT)|(1<<TWEN);  
     // waiting TWINT flag to read status code.
     while (!(TWCR & (1<<TWINT)));
     bus_status  = TWSR & 0xF8; // xxxxx000
@@ -26,14 +26,14 @@ int TWI_start(char address){
         return 1;
 }
 void TWI_stop(){
-    TWCR |= (1<<TWSTO)|(1<<TWINT)|(1<<TWEN);
+    TWCR = (1<<TWSTO)|(1<<TWINT)|(1<<TWEN);
     while (TWCR & (1<<TWSTO)); // ******
 }
 int  TWI_write(char data){
     char bus_status;
     TWDR = data;
     // Send Data
-    TWCR |= (1<<TWINT)|(1<<TWEN);  
+    TWCR = (1<<TWINT)|(1<<TWEN);  
     // waiting TWINT flag to read status code.
     while (!(TWCR & (1<<TWINT)));
     bus_status  = TWSR & 0xF8; // xxxxx000
@@ -43,7 +43,7 @@ int  TWI_write(char data){
         return 0;
 }
 char TWI_read(){
-    TWCR |= (1<<TWINT)|(1<<TWEN)|(1<<TWEA);
+    TWCR = (1<<TWINT)|(1<<TWEN)|(1<<TWEA);
     // waiting TWINT flag 
     while (!(TWCR & (1<<TWINT)));
     return TWDR;
@@ -55,7 +55,7 @@ char TWI_read(){
 
 void TWI_init_slave(char address){
     TWAR = address; // 00000010
-    TWCR |= (1<<TWEA)|(1<<TWINT)|(1<<TWEN);
+    TWCR = (1<<TWEA)|(1<<TWINT)|(1<<TWEN);
 }
 int TWI_slave_listen(){
     while(1){
@@ -75,7 +75,7 @@ int TWI_slave_listen(){
 int  TWI_slave_write(char data){
     char bus_status;
     TWDR = data;
-    TWCR |= (1<<TWEA)|(1<<TWINT)|(1<<TWEN);
+    TWCR = (1<<TWEA)|(1<<TWINT)|(1<<TWEN);
     // Waiting Flag TWINT to be set
     while(!(TWCR & (1<<TWINT)));
     bus_status =  TWSR & 0xF8;
@@ -86,12 +86,14 @@ int  TWI_slave_write(char data){
 }
 char TWI_slave_read(){
     char bus_status;
-    TWCR |= (1<<TWEA)|(1<<TWINT)|(1<<TWEN);
+    TWCR = (1<<TWEA)|(1<<TWINT)|(1<<TWEN);
     // Waiting Flag TWINT to be set
     while(!(TWCR & (1<<TWINT)));
     bus_status =  TWSR & 0xF8;
-    if(bus_status == 0x80)
+    if(bus_status == 0x80 ||
+            bus_status == 0x88||
+            bus_status == 0x90||
+            bus_status == 0x98)
         return TWDR;
-    else
-        return -1;
+    
 }
